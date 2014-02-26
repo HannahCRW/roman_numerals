@@ -1,9 +1,9 @@
 
-def numeral_roman_index(number) 
-  numerals = {1000 => "M", 500 => "D", 100 => "C", 50 => "L", 10 => "X", 5 => "V", 1 => "I"}
-  numerals[number]
-end
 
+#def numeral_roman_index(number) 
+#  numerals = {1000 => "M", 500 => "D", 100 => "C", 50 => "L", 10 => "X", 5 => "V", 1 => "I"}
+#  numerals[number]
+#end
 
 def remainder(divisor, number)
  	r = number % divisor
@@ -11,11 +11,9 @@ def remainder(divisor, number)
 	r
 end
 
-
 def number_divided_by(divisor, r)
 	r / divisor
 end
-
 
 def remainder_array(number)
 	r_array = []
@@ -27,7 +25,6 @@ def remainder_array(number)
 	end
 	r_array
 end
-
 
 def division_array(number)
 	d_array = []
@@ -52,20 +49,47 @@ def array_conversion(number)
 		i += 1
 	end
 	roman_result_array
-	
 end
 
 def fours_and_nines(number)
-	array = array_conversion(number) # returns: roman_result_array
-	if array[2] == "CCCC"
-		array[2] = "CD"
+	final_array = array_conversion(number) # returns: roman_result_array
+	if final_array[2] == "CCCC"
+		if final_array[1] == "D"
+			final_array[2] = nil
+			final_array[1] = "CM"
+		else
+			final_array[2] = "CD"
+		end
 	end
-	if array[4] == "XXXX"
-		array[4] = "XL"
+	if final_array[4] == "XXXX"
+		if final_array[3] == "L"
+			final_array[4] = nil
+			final_array[3] = "XC"
+		elsif
+			final_array[2] == "CD"
+			final_array[4] = "XL"
+		end
 	end
-	if array[6] == "IIII"
-		array[6] = "IV"
+	if final_array[6] == "IIII"
+		if final_array[5] == "V"
+			final_array[6] = nil
+			final_array[5] = "IX"
+		else
+			final_array[6] = "IV"
+		end
 	end
-	array
+	final_array
 end
-	#['M', 'D', 'CD', "L", "XL", "V", "II"]
+
+def array_as_string(number)
+	fours_and_nines(number).join
+end
+
+def final
+	puts "Gimme a number:"
+	number = gets.chomp.to_i
+	puts "Here's your number as a roman numeral: #{array_as_string(number)}"
+end
+
+final
+
