@@ -65,8 +65,7 @@ def fours_and_nines(number)
 		if final_array[3] == "L"
 			final_array[4] = nil
 			final_array[3] = "XC"
-		elsif
-			final_array[2] == "CD"
+		else
 			final_array[4] = "XL"
 		end
 	end
@@ -88,7 +87,7 @@ end
 def final
 	puts "Gimme a number:"
 	number = gets.chomp.to_i
-	puts "Here's your number as a roman numeral: #{array_as_string(number)}"
+	puts "Party like it's #{array_as_string(number)}"
 end
 
 final
